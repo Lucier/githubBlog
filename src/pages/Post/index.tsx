@@ -15,7 +15,7 @@ import Markdown from 'markdown-to-jsx'
 
 import { BadgeIcon } from '../../components/BadgeIcon'
 import { Link } from '../../components/Link'
-import { api } from '../../lib/api'
+import { api } from '../../lib/axios'
 import {
   PostContainer,
   PostContent,
@@ -39,7 +39,7 @@ export function Post() {
   const { id } = useParams()
 
   const fetchIssueData = useCallback(async () => {
-    const { data } = await api.get(`/repos/lucier/github-blog/issues/${id}`)
+    const { data } = await api.get(`/repos/lucier/githubBlog/issues/${id}`)
     setIssue({
       ...data,
       login: data.user.login,
@@ -62,7 +62,7 @@ export function Post() {
           <Link
             external
             target="_blank"
-            to={`https://github.com/lucier/github-blog/issues/${id}`}
+            to={`https://github.com/lucier/githubBlog/issues/${id}`}
           >
             Ver no GitHub
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="1x" />

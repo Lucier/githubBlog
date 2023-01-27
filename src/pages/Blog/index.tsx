@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { api } from '../../lib/api'
+import { api } from '../../lib/axios'
 import { Card } from './components/Card'
 import { Profile } from './components/Profile'
 import { SearchForm } from './components/SearchForm'
@@ -58,7 +58,7 @@ export function Blog() {
 
   const loadIssuesFromRepo = useCallback(async () => {
     const { data } = await api.get<GithubData>(
-      '/search/issues?q=repo:lucier/github-blog',
+      '/search/issues?q=repo:lucier/githubBlog',
     )
 
     setIssues(
@@ -73,7 +73,7 @@ export function Blog() {
 
   const searchPost = useCallback(async (query: string = '') => {
     const { data } = await api.get<GithubData>(
-      `/search/issues?q=${query}?repo:lucier/github-blog`,
+      `/search/issues?q=${query}?repo:lucier/githubBlog`,
     )
 
     setIssues(
